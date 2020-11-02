@@ -16,8 +16,8 @@ unsigned long has_iptc(VipsImage *in) {
 // won't remove the ICC profile and orientation
 void remove_metadata(VipsImage *in) {
     gchar ** fields = vips_image_get_fields(in);
-
-    for (int i=0; fields[i] != NULL; i++) {
+    int i;
+    for (i=0; fields[i] != NULL; i++) {
         if (
         strncmp(fields[i], VIPS_META_ICC_NAME, sizeof(VIPS_META_ICC_NAME)) &&
         strncmp(fields[i], VIPS_META_ORIENTATION, sizeof(VIPS_META_ORIENTATION))
